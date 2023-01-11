@@ -41,7 +41,18 @@ if ($conn->connect_error) {
 
 $sql = "SELECT author, message FROM urler";
 $result = $conn->query($sql);
-print_r($result);
+
+
+if ($result->num_rows > 0) {
+      // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "author: " . $row["id"]. " - Message: " . $row["message"]. "<br>";
+    }
+} else {
+    echo "0 results";
+}
+$conn->close();
+
 #######
 
 // Handle the add page
