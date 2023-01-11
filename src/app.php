@@ -5,6 +5,7 @@
                 table, th, td {
                 border: 1px solid white;
                 border-collapse: collapse;
+                font-size: 13px;
                 }
                 th, td {
                 background-color: #96D4D4;
