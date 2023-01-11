@@ -25,18 +25,24 @@ $app->match('/', function () use ($app) {
     $query = $app['db']->prepare("SELECT message, author FROM {$app['db.table']}");
     $thoughts = $query->execute() ? $query->fetchAll(PDO::FETCH_ASSOC) : array();
 
-    print_r($thoughts);
-
-
-while($row = $thoughts->fetch_assoc()) {
-    echo "author: " . $row["author"]. " - Message: " . $row["message"]. "<br>";
-}
-
     return $app['twig']->render('index.twig', array(
         'title'    => 'Your Thoughts',
-        #'thoughts' => $thoughts,
+        'thoughts' => $thoughts,
     ));
 });
+
+
+#######
+$conn = new mysqli('terraform-20230108221845171900000001.csfl3dafisa1.eu-central-1.rds.amazonaws.com', 'admin', 'ohayPgeefVYbWnovSHu99iVQ', 'mydb');
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT author, message FROM urler";
+$result = $conn->query($sql);
+print_r($result);
+#######
 
 // Handle the add page
 $app->match('/add', function (Request $request) use ($app) {
