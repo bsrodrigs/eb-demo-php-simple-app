@@ -13,7 +13,7 @@ $result = $conn->query($sql);
 
 print_r($result);
 
-print_r($result->fetch_assoc())
+print_r($result->fetch_assoc());
 
 if ($result->num_rows > 0) {
       // output data of each row
