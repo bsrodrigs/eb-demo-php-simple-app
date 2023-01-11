@@ -25,7 +25,7 @@ $app->match('/', function () use ($app) {
     $query = $app['db']->prepare("SELECT message, author FROM {$app['db.table']}");
     $thoughts = $query->execute() ? $query->fetchAll(PDO::FETCH_ASSOC) : array();
 
-    echo $thoughts;
+    print_r($thoughts);
 
     return $app['twig']->render('index.twig', array(
         'title'    => 'Your Thoughts',
