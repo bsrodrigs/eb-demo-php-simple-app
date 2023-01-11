@@ -15,14 +15,6 @@ print_r($result);
 
 print_r($result->fetch_assoc());
 
-if ($result->num_rows > 0) {
-      // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "author: " . $row["author"]. " - Message: " . $row["message"]. "<br>";
-    }
-} else {
-    echo "0 results";
-}
 $conn->close();
 
 #######
