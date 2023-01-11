@@ -11,12 +11,8 @@ if ($conn->connect_error) {
 $sql = "SELECT author, message FROM urler";
 $result = $conn->query($sql);
 
-print_r($result);
-
-print_r($result->fetch_assoc());
-
 if ($result->num_rows > 0) {
-    echo "<table><tr><th>ID</th><th>Name</th></tr>";
+    echo "<table><tr><th>ID</th><th>Author</th><th>Message</th></tr>";
     // output data of each row
     while($row = $result->fetch_assoc()) {
         echo "<tr><td>".$row["id"]."</td><td>".$row["author"]." ".$row["message"]."</td></tr>";
