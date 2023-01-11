@@ -27,9 +27,19 @@ $app->match('/', function () use ($app) {
 
     print_r($thoughts);
 
+if ($thoughts->num_rows > 0) {
+    // output data of each row
+    while($row = $thoughts->fetch_assoc()) {
+        echo "author: " . $row["author"]. " - Message: " . $row["message"]. "<br>";
+    }
+} else {
+    echo "0 results";
+}
+
+
     return $app['twig']->render('index.twig', array(
         'title'    => 'Your Thoughts',
-        'thoughts' => $thoughts,
+        #'thoughts' => $thoughts,
     ));
 });
 
